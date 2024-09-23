@@ -1,0 +1,11 @@
+venv
+logs
+temp
+.venv
+.vscode
+.env
+.pytest_cache
+*.pptx
+*.db
+__pycache__
+*.ipynb
