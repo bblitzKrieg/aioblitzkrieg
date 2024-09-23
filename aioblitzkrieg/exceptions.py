@@ -1,0 +1,3 @@
+
+class BlitzkriegAPIError(Exception):
+    pass
