@@ -9,6 +9,9 @@ class Archive(BaseModel):
     status: str
     add_dt: datetime
 
+class ArchiveMinify(BaseModel):
+    archive_id: int
+
 class ArchiveList(BaseModel):
 
     results: List[Archive]

@@ -48,7 +48,7 @@ class BaseClient:
         if time_diff < 0.5:
             await asyncio.sleep(0.5 - time_diff)
 
-    async def _make_request(self, method: str, url: StrOrURL, **kwargs) -> dict:
+    async def _make_request(self, method: str, url: StrOrURL, forced_ignore_429: bool = False, **kwargs) -> dict:
         """
         Make a request.
             :param method: HTTP Method
@@ -58,7 +58,7 @@ class BaseClient:
         """
         session = self.get_session()
 
-        if self._bypass_429:
+        if self._bypass_429 and not forced_ignore_429:
             await self._wait_till_429_is_over()
 
         async with session.request(method, url, **kwargs) as response:
