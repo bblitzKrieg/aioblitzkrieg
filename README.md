@@ -1,5 +1,5 @@
 ## **[@BlitzkriegAutobot](https://t.me/BlitzkriegAutobot) asynchronous api wrapper**
-**Docs:** https://blitzkrieg-api.readme.io
+**Docs:** https://blitzkriegpublicapi.readme.io/
 
 
 **Install**
