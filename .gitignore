@@ -12,3 +12,4 @@ __pycache__
 *.ipynb
 setup.py
 MANIFEST.in
+pyproject.toml
