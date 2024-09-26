@@ -10,3 +10,5 @@ test.py
 *.db
 __pycache__
 *.ipynb
+setup.py
+MANIFEST.in
