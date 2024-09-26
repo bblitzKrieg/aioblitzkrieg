@@ -1,7 +1,11 @@
 venv
 logs
 temp
+dist
+build
+*.egg-info
 test.py
+setup.cfg
 .venv
 .vscode
 .env
