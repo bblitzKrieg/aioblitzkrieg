@@ -30,8 +30,8 @@ class AioBlitzkrieg(BaseClient):
 
         super().__init__()
 
-        self.base_url = 'http://api.blitzkrieg.space/public/v1'
-        self.upload_base_url = 'http://uploadapi.blitzkrieg.space'
+        self.base_url = 'https://api.blitzkrieg.space/public/v1'
+        self.upload_base_url = 'https://uploadapi.blitzkrieg.space'
         self.api_key = api_key
 
         self.headers = {
