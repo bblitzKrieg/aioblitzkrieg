@@ -7,6 +7,7 @@ class Seller(BaseModel):
     telegram_id: int
     balance: float
     language: str
+    currency: str
 
 class SellerShortApi(BaseModel):
 
