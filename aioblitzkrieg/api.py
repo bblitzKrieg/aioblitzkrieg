@@ -1,16 +1,15 @@
+from typing import Literal
 from .base import BaseClient
-
-from dataclasses import dataclass
 import aiofiles
 
 from .models.archives import (
-    Archive,
-    ArchiveMinify,
-    ArchiveList,
-    ArchiveReport
+    ArchiveMinify, ArchiveList, ArchiveReport
 )
 from .models.sellers import (
-    Seller
+    Seller, SellerShortApi, SellerShort
+)
+from .models.other import (
+    Prices
 )
 
 from aiohttp import FormData
@@ -37,6 +36,78 @@ class AioBlitzkrieg(BaseClient):
         self.headers = {
             'Authorization': f'Bearer {self.api_key}'
         }
+    
+    async def get_prices(self, currency: Literal['usd', 'rub']) -> Prices:
+
+        """
+
+        Use this method to get a price list.
+
+        Args:
+            currency (str): Currency to get prices. Available values: 'usd', 'rub'.
+
+        Returns:
+            Prices: Prices object
+        """
+
+        url = f"{self.base_url}/get_prices"
+
+        params = {
+            'currency': currency
+        }
+
+        response = await self._make_request(
+            method='get', url=url, headers=self.headers, params=params
+        )
+        return Prices(**response)
+    
+    async def get_seller(self, telegram_id: int) -> SellerShort:
+
+        """
+
+        Use this method to get a seller.
+
+        Args:
+            telegram_id (int): Telegram ID of the seller.
+
+        Returns:
+            SellerShort: SellerShort object
+        """
+
+        url = f"{self.base_url}/get_seller"
+
+        params = {
+            'telegram_id': telegram_id
+        }
+
+        response = await self._make_request(
+            method='get', url=url, headers=self.headers, params=params
+        )
+        return SellerShort(**response)
+    
+    async def create_seller(self, telegram_id: int) -> SellerShortApi:
+
+        """
+
+        Use this method to create a seller.
+
+        Args:
+            telegram_id (int): Telegram ID of the seller.
+
+        Returns:
+            SellerShortApi: SellerShortApi object
+        """
+
+        url = f"{self.base_url}/create_seller"
+
+        params = {
+            'telegram_id': telegram_id
+        }
+
+        response = await self._make_request(
+            method='post', url=url, headers=self.headers, params=params
+        )
+        return SellerShortApi(**response)
     
     async def upload_archive(self, file_path: str, ref_id: str = None) -> ArchiveMinify:
 
